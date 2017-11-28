@@ -110,6 +110,7 @@ public class CardsServiceImpl implements CardsService {
     @Override
     public List<Card> getAllFromCategory(int categoryId, int userId) {
         return cardsRepository.getAllFromCategory(categoryId, userId);
+
     }
 
     @Override
