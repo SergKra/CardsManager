@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2371166316">
+    <data-source source="LOCAL" name="PostgreSQL - cardsmanager@localhost" uuid="6b055057-4406-4560-abb8-5eae2a9b961f">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/cardsmanager</jdbc-url>
+    </data-source>
+  </component>
+</project>
