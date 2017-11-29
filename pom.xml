@@ -264,7 +264,7 @@
         </profile>
 
         <profile>
-            <id>heroky</id>
+            <id>heroku</id>
             <build>
                 <plugins>
                     <plugin>
