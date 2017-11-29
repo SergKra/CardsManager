@@ -33,6 +33,7 @@
               p:password="${database.password}"/>
     </beans>-->
     <beans profile="heroku">
+        <context:property-placeholder location="classpath:db/heroku.properties" system-properties-mode="OVERRIDE"/>
         <bean class="java.net.URI" id="dbUrl">
             <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
         </bean>
@@ -41,6 +42,7 @@
             <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
             <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
             <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+            <property name="driverClassName" value="org.postgresql.Driver"/>
         </bean>
     </beans>
     <beans profile="postgres">
