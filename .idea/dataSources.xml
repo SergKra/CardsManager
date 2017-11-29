@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2371166316">
+  <component name="DataSourceManagerImpl" format="xml" hash="3310991439">
     <data-source source="LOCAL" name="PostgreSQL - cardsmanager@localhost" uuid="6b055057-4406-4560-abb8-5eae2a9b961f">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/cardsmanager</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - d24dlfs9c1bdj7@ec2-50-19-86-17.compute-1.amazonaws.com" uuid="9aac332c-0fd9-47c7-abf2-e12c768081c9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-50-19-86-17.compute-1.amazonaws.com:5432/d24dlfs9c1bdj7</jdbc-url>
+      <driver-properties>
+        <property name="ssl" value="true" />
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
+      </driver-properties>
     </data-source>
   </component>
 </project>
