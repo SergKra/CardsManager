@@ -36,26 +36,17 @@
         <context:property-placeholder location="classpath:/db/heroku.properties" system-properties-mode="OVERRIDE"/>
 
         <bean class="java.net.URI" id="dbUrl">
-            <constructor-arg value="${DATABASE_URL}"/>
+            <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
         </bean>
+
         <bean id="dataSource"
-              class="org.apache.tomcat.jdbc.pool.DataSource"
-              p:url="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + @dbUrl.getPath() }"
-              p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
-              p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
-              p:driverClassName="org.postgresql.Driver"
-              p:validationQuery="SELECT 1"
-              p:maxActive="10"
-              p:minIdle="2"
-              p:maxWait="20000"
-              p:initialSize="2"
-              p:maxIdle="5"
-              p:testOnBorrow="true"
-              p:removeAbandoned="true"
-              p:testOnConnect="true"
-              p:testWhileIdle="true"/>
+              class="org.apache.tomcat.jdbc.pool.DataSource">
+        <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+        <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+        </bean>
     </beans>
-    <!--<beans profile="postgres">
+    <beans profile="postgres">
         <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
 
         <bean id="dataSource"
@@ -64,7 +55,7 @@
               p:url="${database.url}"
               p:username="${database.username}"
               p:password="${database.password}"/>
-    </beans>-->
+    </beans>
 
     <!--<beans profile="tomcat">
         <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/topjava"/>
