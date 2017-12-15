@@ -8,9 +8,6 @@ import ua.cardsmanager.model.Status;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by j on 06.11.2017.
- */
 public interface CardsService {
 
     Card create(Card card, int userId);

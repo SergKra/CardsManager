@@ -6,9 +6,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by j on 21.11.2017.
- */
 
 @Entity
 @Table(name = "status")

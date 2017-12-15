@@ -8,10 +8,6 @@ import ua.cardsmanager.repository.jpa.UserRepository;
 
 import java.util.List;
 
-/**
- * Created by j on 06.11.2017.
- */
-
 @Service
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
@@ -44,11 +40,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getBySessionId(String sessionId, String email) {
-        return userRepository.getBySessionId(sessionId, email);
-    }
-
-    @Override
     @Transactional
     public void update(User user) {
         userRepository.save(user);
@@ -59,12 +50,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.getAll();
     }
 
-    @Override
-    public User getWithCards(int id) {
-        return userRepository.getWithCards(id);
-    }
-
-    @Override
+        @Override
     public boolean checkEmailExists(String email) {
         List<User> users = userRepository.getAll();
         for (User userExisted : users) {

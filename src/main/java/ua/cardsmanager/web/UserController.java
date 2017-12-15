@@ -19,9 +19,6 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-/**
- * Created by j on 06.11.2017.
- */
 
 @Controller
 public class UserController {
@@ -67,6 +64,8 @@ public class UserController {
     public String checkLogin(HttpServletRequest request) {
         String userEmail = request.getParameter("email");
         String password = request.getParameter("pwd");
+        if (userEmail.isEmpty()|| password.isEmpty())
+            return "redirect:/login";
         User user = userService.getByEmail(userEmail);
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session = request.getSession(true);

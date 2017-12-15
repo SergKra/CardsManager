@@ -20,10 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by j on 13.11.2017.
- */
-
 @Controller
 @RequestMapping("cards")
 

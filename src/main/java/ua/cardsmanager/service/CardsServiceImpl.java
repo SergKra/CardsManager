@@ -15,9 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Created by j on 10.11.2017.
- */
 @Service
 @Transactional(readOnly = true)
 public class CardsServiceImpl implements CardsService {

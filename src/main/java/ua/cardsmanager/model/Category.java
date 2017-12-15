@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by j on 06.11.2017.
- */
 
 @NamedQueries({
         @NamedQuery(name = Category.ALL_SORTED, query = "SELECT c FROM Category c LEFT JOIN FETCH c.cardList where c.user.id=:userId order by c.id ASC"),

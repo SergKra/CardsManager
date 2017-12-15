@@ -8,10 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-
-/**
- * Created by j on 10.11.2017.
- */
 @Repository
 public class CardsRepositoryImpl implements CardsRepository {
 
@@ -209,12 +205,6 @@ public class CardsRepositoryImpl implements CardsRepository {
         }
 
     }
-    /*@Override
-    public List<TestCard> testtest(int userId)
-    {
-        return em.createQuery("SELECT c.category, count(c) FROM Card c WHERE c.user.id=:userId AND c.done=false GROUP BY c.category ORDER BY c.date DESC", TestCard.class)
-                .setParameter("userId", userId)
-                .getResultList();
-    }*/
+
 
 }

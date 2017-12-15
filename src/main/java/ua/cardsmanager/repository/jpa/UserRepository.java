@@ -4,9 +4,6 @@ import ua.cardsmanager.model.User;
 
 import java.util.List;
 
-/**
- * Created by j on 06.11.2017.
- */
 public interface UserRepository {
 
     User save(User user);
@@ -17,9 +14,6 @@ public interface UserRepository {
 
     User getByEmail(String email);
 
-    User getBySessionId(String sessionId, String email);
-
     List<User> getAll();
 
-    User getWithCards(int id);
 }

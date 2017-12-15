@@ -17,9 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * Created by j on 15.11.2017.
- */
 @Controller
 @RequestMapping("category")
 public class CategoryController {

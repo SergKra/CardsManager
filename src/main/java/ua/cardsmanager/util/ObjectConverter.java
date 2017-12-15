@@ -5,11 +5,6 @@ import org.springframework.core.convert.converter.Converter;
 import ua.cardsmanager.model.Category;
 import ua.cardsmanager.repository.jpa.CardsRepository;
 
-
-/**
- * Created by j on 14.11.2017.
- */
-
 public class ObjectConverter implements Converter<String, Category> {
 
     @Autowired

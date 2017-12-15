@@ -7,9 +7,6 @@ import ua.cardsmanager.model.Training;
 
 import java.util.List;
 
-/**
- * Created by j on 10.11.2017.
- */
 public interface CardsRepository {
 
     Card save(Card card, int userId);
@@ -56,8 +53,5 @@ public interface CardsRepository {
 
     void saveStatus(Card card);
 
-    /*List<TestCard> testtest(int userId);*/
-
-    /*List<Category> getAllCategoriesByCardStatus(int userId, boolean status);*/
 
 }

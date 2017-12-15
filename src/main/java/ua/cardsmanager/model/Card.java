@@ -9,9 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by j on 06.11.2017.
- */
+
 @NamedQueries({
         @NamedQuery(name = Card.ALL_SORTED, query = "SELECT c FROM Card c WHERE c.user.id=:userId ORDER BY c.id DESC"),
         @NamedQuery(name = Card.STATUS_SORTED, query = "SELECT c FROM Card c WHERE c.user.id=:userId AND c.done=:status ORDER BY c.id DESC"),

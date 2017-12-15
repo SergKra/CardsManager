@@ -5,9 +5,6 @@ import ua.cardsmanager.model.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by j on 17.11.2017.
- */
 public class TrainingDto {
 
     private List<String> categories = new ArrayList<>();
