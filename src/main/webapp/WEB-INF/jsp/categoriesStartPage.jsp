@@ -34,8 +34,10 @@
                 <td><fmt:formatDate value="${category.date}" pattern="dd-MMMM-yyyy"/></td>
                 <td><a href="/cards/cardsList/${category.id}"><c:out value="${category.cardList.size()}"/></a></td>
                 <td><a href="/cards/cardsList/${category.id}?status=false"><c:out value="${categoryList.get(category)}"/></a></td>
+                <c:if test="${category.name.compareTo('general')!=0}">
                     <td><div id="div"><a href="${pageContext.request.contextPath}/category/edit/${category.id}"><span class="glyphicon glyphicon-pencil"></span></a>
                     <a href="${pageContext.request.contextPath}/category/delete/${category.id}"><span class="glyphicon glyphicon-remove"></span></a></div></td>
+                </c:if>
             </tr>
         </c:forEach>
     </table>

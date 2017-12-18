@@ -27,6 +27,8 @@ public interface CardsRepository {
 
     Category getCategory(int id, int userId);
 
+    Category getByCategoryName(String name, int userId);
+
     Category getCategoryById(Integer id);
 
     List<Card> getAll(int userId);

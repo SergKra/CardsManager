@@ -96,6 +96,15 @@ public class CardsRepositoryImpl implements CardsRepository {
     }
 
     @Override
+    public Category getByCategoryName(String name, int userId) {
+        List<Category> cards = em.createNamedQuery(Category.BY_NAME, Category.class)
+                .setParameter("name", name)
+                .setParameter("userId", userId)
+                .getResultList();
+        return DataAccessUtils.singleResult(cards);
+    }
+
+    @Override
     public Category getCategoryById(Integer id) {
         return em.find(Category.class, id);
     }

@@ -90,6 +90,19 @@ public class CardsServiceImpl implements CardsService {
     }
 
     @Override
+    @Transactional
+    public Category getByCategoryName(String name, int userId) {
+        Category categoryGen = cardsRepository.getByCategoryName(name,userId);
+        if (categoryGen==null)
+        {
+            categoryGen = new Category();
+            categoryGen.setName("general");
+            return create(categoryGen,userId);
+        }
+        return categoryGen;
+    }
+
+    @Override
     public List<Card> getAll(int userId) {
         return cardsRepository.getAll(userId);
     }

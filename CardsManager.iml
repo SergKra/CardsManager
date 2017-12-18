@@ -20,7 +20,7 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/ua/cardsmanager/util/ConverterConfig.java</file>
         </fileset>
-        <fileset id="web application context" profiles="heroku,jpa" autodetected="true" />
+        <fileset id="web application context" profiles="jpa,postgres" autodetected="true" />
       </configuration>
     </facet>
     <facet type="jpa" name="JPA">

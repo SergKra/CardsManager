@@ -15,7 +15,7 @@ import java.util.List;
         @NamedQuery(name = Category.ALL_WITHOUT_CARDS, query = "SELECT c FROM Category c where c.user.id=:userId order by c.id ASC"),
         /*@NamedQuery(name = Category.ALL_BY_CARDSTATUS, query = "SELECT c FROM Category c left JOIN FETCH Card card WHERE c.user.id=:userId and card.done=:status ORDER BY c.date DESC"),*/
         @NamedQuery(name = Category.DELETE, query = "DELETE FROM Category c WHERE c.id=:id AND c.user.id=:userId"),
-        /*@NamedQuery(name = Category.BY_NAME, query = "SELECT c FROM Category c WHERE c.id=:id"),*/
+        @NamedQuery(name = Category.BY_NAME, query = "SELECT c FROM Category c WHERE c.name=:name AND c.user.id=:userId"),
 })
 
 @Entity
@@ -25,8 +25,8 @@ public class Category extends AbstractNamedEntity {
     public static final String ALL_SORTED = "Category.getAll";
     public static final String DELETE = "Category.delete";
     public static final String ALL_WITHOUT_CARDS = "category.getAllWithoutCards";
-    /*public static final String ALL_BY_CARDSTATUS = "Category.getByCardStatus";*/
-    /*public static final String BY_NAME = "Category.getByName";*/
+//    public static final String ALL_BY_CARDSTATUS = "Category.getByCardStatus";
+    public static final String BY_NAME = "Category.getByName";
 
     @Column(name = "date_time", columnDefinition = "timestamp default now()")
     @NotNull

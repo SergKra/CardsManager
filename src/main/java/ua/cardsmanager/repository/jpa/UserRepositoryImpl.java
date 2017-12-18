@@ -2,6 +2,7 @@ package ua.cardsmanager.repository.jpa;
 
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
+import ua.cardsmanager.model.Category;
 import ua.cardsmanager.model.Role;
 import ua.cardsmanager.model.User;
 
@@ -22,6 +23,10 @@ public class UserRepositoryImpl implements UserRepository {
         if (user.isNew()) {
             user.setRoles(EnumSet.of(Role.USER));
             em.persist(user);
+            Category category = new Category();
+            category.setName("general");
+            category.setUser(user);
+            em.persist(category);
             return user;
         } else {
             return em.merge(user);

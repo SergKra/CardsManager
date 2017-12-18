@@ -40,7 +40,7 @@
             <label class="control-label col-sm-2" for="category">Category:</label>
             <div class="col-sm-10">
                 <form:select path="category" id="category" cssClass="selectpicker" title="Category">
-                    <%--<form:option value = "NONE" label = ""/>--%>
+                    <option selected value="${general.id}"> ${general.name}</option>
                     <c:forEach items="${categoryList}" var="category">
                         <form:option value="${category.id}" label="${category.name}"/>
                     </c:forEach>

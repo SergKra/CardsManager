@@ -32,6 +32,8 @@ public interface CardsService {
 
     Category getCategory(int id, int userId);
 
+    Category getByCategoryName(String name, int userId);
+
     List<Card> getAll(int userId);
 
     List<Card> getAllByStatus(int userId, boolean status);

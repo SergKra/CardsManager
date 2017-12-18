@@ -58,8 +58,12 @@ public class CardsController {
     public String addView(Model model, HttpServletRequest request) {
         Integer userId = getUserId(request);
         if (userId != null) {
+            List<Category> categoryList = cardsService.getAllCategoriesWithoutCards(userId);
+            Category categoryGen = cardsService.getByCategoryName("general", userId);
+            categoryList.remove(categoryGen);
             model.addAttribute("card", new Card());
-            model.addAttribute("categoryList", cardsService.getAllCategoriesWithoutCards(userId));
+            model.addAttribute("categoryList", categoryList);
+            model.addAttribute("general", categoryGen);
             return "cardsAddForm";
         } else return "loginFailed";
 
@@ -70,7 +74,11 @@ public class CardsController {
         Integer userId = getUserId(request);
         if (userId != null) {
             if (result.hasErrors()) {
-                model.addAttribute("categoryList", cardsService.getAllCategoriesWithoutCards(userId));
+                List<Category> categoryList = cardsService.getAllCategoriesWithoutCards(userId);
+                Category categoryGen = cardsService.getByCategoryName("general", userId);
+                categoryList.remove(categoryGen);
+                model.addAttribute("categoryList", categoryList);
+                model.addAttribute("general", categoryGen);
                 return "cardsAddForm";
             }
             cardsService.create(card, userId);
