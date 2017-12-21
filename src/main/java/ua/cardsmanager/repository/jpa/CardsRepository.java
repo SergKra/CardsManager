@@ -49,7 +49,7 @@ public interface CardsRepository {
 
     List<Status> getAllStatus(int userId, String trainingName);
 
-    Status updateStatus(int cardId, String trainingName, boolean done);
+    Status updateStatus(int cardId, String trainingName);
 
     Status changeStatus(Status status);
 

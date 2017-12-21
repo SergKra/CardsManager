@@ -137,20 +137,20 @@ public class CardsController {
         }
     }
 
-    @RequestMapping(value = "/updateStatus/{id}", method = RequestMethod.GET)
-    public String updateStatus(@PathVariable("id") Integer id, HttpServletRequest request) {
-        Integer userId = getUserId(request);
-        if (userId != null) {
-            Card card = cardsService.get(id, userId);
-            String status = request.getParameter("status");
-            card.setDone(!status.equals("true"));
-            Card cardUpdated = cardsService.update(card, userId);
-            cardsService.changeStatus(cardUpdated);
-            String url = (String) request.getSession().getAttribute("lastPage");
-            return "redirect:" + url;
-        }
-        return "loginFailed";
-    }
+//    @RequestMapping(value = "/updateStatus/{id}", method = RequestMethod.GET)
+//    public String updateStatus(@PathVariable("id") Integer id, HttpServletRequest request) {
+//        Integer userId = getUserId(request);
+//        if (userId != null) {
+//            Card card = cardsService.get(id, userId);
+//            String status = request.getParameter("status");
+//            card.setDone(!status.equals("true"));
+//            Card cardUpdated = cardsService.update(card, userId);
+//            cardsService.changeStatus(cardUpdated);
+//            String url = (String) request.getSession().getAttribute("lastPage");
+//            return "redirect:" + url;
+//        }
+//        return "loginFailed";
+//    }
 
     @RequestMapping(value = "/training", method = RequestMethod.GET)
     public String getTraining(Model model, HttpServletRequest request) {
@@ -208,7 +208,7 @@ public class CardsController {
                 return "redirect:/cards/training";
             }
             if (done != null && done.equals("true")) {
-                cardsService.updateStatus(card, training, userId,true);
+                cardsService.updateStatus(card, training, userId);
             }
             @SuppressWarnings("unchecked")
             List<Card> cardList = (ArrayList<Card>) request.getSession().getAttribute("cardsList");
@@ -251,7 +251,7 @@ public class CardsController {
             }
             for (Status status: card.getStatusList())
             {
-                cardsService.updateStatus(card, status.getTraining().getName(), userId, status.isDone());
+                cardsService.changeStatus(status,userId);
             }
             String url = (String) request.getSession().getAttribute("lastPage");
             return "redirect:" + url;

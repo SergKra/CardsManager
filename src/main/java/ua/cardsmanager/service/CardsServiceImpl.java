@@ -146,9 +146,9 @@ public class CardsServiceImpl implements CardsService {
 
     @Override
     @Transactional
-    public Status updateStatus(Card card, String trainingName, int userId,boolean done) {
+    public Status updateStatus(Card card, String trainingName, int userId) {
 
-        Status status = cardsRepository.updateStatus(card.getId(), trainingName,done);
+        Status status = cardsRepository.updateStatus(card.getId(), trainingName);
         if (status != null) checkCardStatus(status, userId);
         return status;
     }
@@ -204,14 +204,23 @@ public class CardsServiceImpl implements CardsService {
         return categoryMap;
     }
 
+//    @Override
+//    @Transactional
+//    public void changeStatus(Card card) {
+//        boolean done = card.isDone();
+//
+//        card.getStatusList().stream().filter(status -> status.isDone() != done).forEach(status -> {
+//            status.setDone(done);
+//            cardsRepository.changeStatus(status);
+//        });
+//    }
+
+
     @Override
     @Transactional
-    public void changeStatus(Card card) {
-        boolean done = card.isDone();
-
-        card.getStatusList().stream().filter(status -> status.isDone() != done).forEach(status -> {
-            status.setDone(done);
-            cardsRepository.changeStatus(status);
-        });
+    public Status changeStatus(Status status, int userId) {
+        Status statusUpdated = cardsRepository.changeStatus(status);
+        if (status != null) checkCardStatus(status, userId);
+        return status;
     }
 }

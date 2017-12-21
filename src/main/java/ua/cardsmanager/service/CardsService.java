@@ -50,11 +50,11 @@ public interface CardsService {
 
     List<Status> getAllStatus(int userId, String trainingName);
 
-    Status updateStatus(Card card, String trainingName, int userId,boolean done);
+    Status updateStatus(Card card, String trainingName, int userId);
 
     void checkCardStatus(Status statusUpdated, int userId);
 
-    void changeStatus(Card card);
+    Status changeStatus(Status status, int userId);
 
     List<Card> getSortedCardList(Integer userId, TrainingDto trainingDto);
 
