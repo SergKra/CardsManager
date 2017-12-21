@@ -220,7 +220,7 @@ public class CardsServiceImpl implements CardsService {
     @Transactional
     public Status changeStatus(Status status, int userId) {
         Status statusUpdated = cardsRepository.changeStatus(status);
-        if (status != null) checkCardStatus(status, userId);
-        return status;
+        if (statusUpdated != null) checkCardStatus(statusUpdated, userId);
+        return statusUpdated;
     }
 }
