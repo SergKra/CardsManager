@@ -32,6 +32,7 @@
         <property name="converters">
             <set merge="true">
                 <bean class="ua.cardsmanager.util.ObjectConverter" />
+                <bean class="ua.cardsmanager.util.StatusConverter" />
             </set>
         </property>
     </bean>

@@ -146,30 +146,38 @@ public class CardsServiceImpl implements CardsService {
 
     @Override
     @Transactional
-    public Status updateStatus(Card card, String trainingName, int userId) {
+    public Status updateStatus(Card card, String trainingName, int userId,boolean done) {
 
-        Status status = cardsRepository.updateStatus(card.getId(), trainingName);
+        Status status = cardsRepository.updateStatus(card.getId(), trainingName,done);
         if (status != null) checkCardStatus(status, userId);
         return status;
     }
 
     @Override
     public void checkCardStatus(Status statusUpdated, int userId) {
-
+        int progress = 0;
         Card card = statusUpdated.getCard();
         if (card != null) {
             int count = card.getStatusList().size();
-
+            int counts=0;
             for (Status status : card.getStatusList()) {
                 if (status.isDone())
-                    count--;
+//                    count--;
+//            }
+//            if (count == 0) {
+//                card.setDone(true);
+                    counts++;
             }
-            if (count == 0) {
+            progress=(int)(counts*1.0/count*100);
+
+            card.setProgress(progress);
+            if(progress==100)
                 card.setDone(true);
+            else
+                card.setDone(false);
                 cardsRepository.save(card, userId);
             }
         }
-    }
 
     @Override
     public List<Card> getSortedCardList(Integer userId, TrainingDto trainingDto) {

@@ -187,12 +187,12 @@ public class CardsRepositoryImpl implements CardsRepository {
 
 
     @Override
-    public Status updateStatus(int cardId, String trainingName) {
+    public Status updateStatus(int cardId, String trainingName,boolean done) {
         Status status = DataAccessUtils.singleResult(em.createQuery("select s from Status s where s.card.id=:cardId AND s.training.name=:trainingName", Status.class)
                 .setParameter("cardId", cardId)
                 .setParameter("trainingName", trainingName)
                 .getResultList());
-        status.setDone(true);
+        status.setDone(done);
 
         return em.merge(status);
     }
@@ -215,5 +215,8 @@ public class CardsRepositoryImpl implements CardsRepository {
 
     }
 
-
+    @Override
+    public Status getStatusById(int id) {
+        return em.find(Status.class, id);
+    }
 }

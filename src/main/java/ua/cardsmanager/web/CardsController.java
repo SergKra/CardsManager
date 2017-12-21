@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ua.cardsmanager.dto.TrainingDto;
 import ua.cardsmanager.model.Card;
 import ua.cardsmanager.model.Category;
+import ua.cardsmanager.model.Status;
 import ua.cardsmanager.service.CardsService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -207,7 +208,7 @@ public class CardsController {
                 return "redirect:/cards/training";
             }
             if (done != null && done.equals("true")) {
-                cardsService.updateStatus(card, training, userId);
+                cardsService.updateStatus(card, training, userId,true);
             }
             @SuppressWarnings("unchecked")
             List<Card> cardList = (ArrayList<Card>) request.getSession().getAttribute("cardsList");
@@ -224,6 +225,41 @@ public class CardsController {
         }
         return "loginFailed";
     }
+
+    @RequestMapping(value = "/editStatus/{id}", method = RequestMethod.GET)
+    public String getCardTrainingStatus(@PathVariable("id") Integer id, Model model, HttpServletRequest request)
+    {
+        Integer userId = getUserId(request);
+        if (userId != null) {
+            Card card = cardsService.get(id, userId);
+            if (card != null) {
+                model.addAttribute("card", card);
+                return "cardTrainingStatus";
+            }
+            return "loginFailed";
+        }
+        return "loginFailed";
+    }
+
+    @RequestMapping(value = "/editStatus", method = RequestMethod.POST)
+    public String postCardTrainingStatus(@ModelAttribute("card") @Validated Card card, BindingResult result, HttpServletRequest request, Model model) {
+        Integer userId = getUserId(request);
+        if (userId != null) {
+            if (result.hasErrors()) {
+                model.addAttribute("card", card);
+                return "cardTrainingStatus";
+            }
+            for (Status status: card.getStatusList())
+            {
+                cardsService.updateStatus(card, status.getTraining().getName(), userId, status.isDone());
+            }
+            String url = (String) request.getSession().getAttribute("lastPage");
+            return "redirect:" + url;
+        } else {
+            return "loginFailed";
+        }
+    }
+
 
     /*private boolean isAllowed(HttpServletRequest request, Integer id) {
 

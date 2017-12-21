@@ -23,6 +23,7 @@
         <jsp:useBean id="card" type="ua.cardsmanager.model.Card" scope="request"/>
         <input type="hidden" name="id" value="${card.id}">
         <input type="hidden" name="done" value="${card.done}">
+        <input type="hidden" name="progress" value="${card.progress}">
         <div class="form-group">
             <label class="control-label col-sm-2" for="engName">English Name:</label>
             <div class="col-sm-10">

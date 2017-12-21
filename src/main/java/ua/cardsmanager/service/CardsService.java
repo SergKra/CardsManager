@@ -50,7 +50,7 @@ public interface CardsService {
 
     List<Status> getAllStatus(int userId, String trainingName);
 
-    Status updateStatus(Card card, String trainingName, int userId);
+    Status updateStatus(Card card, String trainingName, int userId,boolean done);
 
     void checkCardStatus(Status statusUpdated, int userId);
 

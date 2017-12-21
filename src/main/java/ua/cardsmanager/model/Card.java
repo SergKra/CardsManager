@@ -61,6 +61,9 @@ public class Card extends AbstractBaseEntity {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "card")
     private List<Status> statusList;
 
+    @Column(name = "progress", nullable = false)
+    private int progress;
+
     public Card(Integer id, String engName, String rusName, Category category, Date date) {
         super(id);
         this.engName = engName;
@@ -126,6 +129,14 @@ public class Card extends AbstractBaseEntity {
 
     public void setStatusList(List<Status> statusList) {
         this.statusList = statusList;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 
     @Override

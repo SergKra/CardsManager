@@ -1,6 +1,6 @@
+DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS trainings;
 DROP TABLE IF EXISTS cards;
-DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS users;
@@ -44,6 +44,7 @@ CREATE TABLE cards (
   engname   VARCHAR                       NOT NULL,
   runame    VARCHAR                       NOT NULL,
   done      BOOL DEFAULT FALSE            NOT NULL,
+  progress  INTEGER DEFAULT 0             NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
   FOREIGN KEY (cat_id) REFERENCES categories (id) ON DELETE CASCADE
 );

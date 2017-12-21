@@ -34,8 +34,8 @@
                 <td><c:out value="${card.rusName}"/></td>
                 <td><c:out value="${card.engName}"/></td>
                 <td><c:out value="${card.category.name}"/></td>
-                <td><div id="link"><a href="/cards/updateStatus/${card.id}?status=${card.done}<%--&&category=${card.category.id}--%>">
-                    <%--<%=card.isDone()%>--%>
+                <%--<td><div id="link"><a href="/cards/updateStatus/${card.id}?status=${card.done}&lt;%&ndash;&&category=${card.category.id}&ndash;%&gt;">
+                    &lt;%&ndash;<%=card.isDone()%>&ndash;%&gt;
                     <c:if test="${card.done}">
                         <span class="glyphicon glyphicon-ok"></span>
                     </c:if>
@@ -44,6 +44,25 @@
                     </c:if>
 
                 </a>
+                    </div>
+                </td>--%>
+                <td>
+                    <div class="row">
+                        <c:if test="${card.progress>50}">
+                        <div class="progress-circle over50 p${card.progress}">
+                            </c:if>
+                                <c:if test="${card.progress<=50}">
+                                <div class="progress-circle p${card.progress}">
+                                    </c:if>
+                                        <a href="${pageContext.request.contextPath}/cards/editStatus/${card.id}"><span>${card.progress}%</span></a>
+                            <div class="left-half-clipper">
+                                <div class="first50-bar"></div>
+                                <div class="value-bar"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </td>
                 <td><fmt:formatDate value="${card.date}" pattern="dd-MMMM-yyyy"/></td>
                 <td><div id="div"><a href="${pageContext.request.contextPath}/cards/edit/${card.id}"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -52,5 +71,6 @@
         </c:forEach>
     </table>
 </div>
+
 </body>
 </html>
